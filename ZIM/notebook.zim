@@ -1,8 +1,8 @@
 [Notebook]
-name=Notes
+name=Abacus
 version=0.4
 endofline=dos
-profile=
+profile=None
 home=Home
 icon=None
 document_root=None

@@ -5,14 +5,7 @@ Creation-Date: 2015-12-26T19:58:26+03:00
 ====== DB2 ======
 Created Saturday 26 December 2015
 
-==== Домашней базе не хватает ====
-
- [  ]
- 
-
-[ ] TODO Задача 1
-[ ] FIXME Задачка 23
-[ ] FIX
+==== Домашней базе не хватает: ====
 
   Compilation errors for PACKAGE BODY ABS.BOSPS_PROC_DATA
 	* PLS-00201: identifier 'FLOG.WR' must be declared
@@ -21,33 +14,31 @@ Created Saturday 26 December 2015
 
 
 '''
-create or replace view 
-'''
-**bosps_curr_data_link_v**'' as''
-''SELECT "FIRM_ID",''
-''       Firm_Name,''
-''       Doc_ID,''
-''       Doc_Name,''
-''       "TMONTH",''
-''       "TYEAR",''
-''       "LEDGER_ID",''
-''       "CODE_NAME",''
-''       "LEDGER_NAME",''
-''       "SUMMA",''
-''       "GRP_ID",''
-''       "GRP_NAME"''
-''  FROM ''//uov_ledgers@link_app//'';''
+create or replace view bosps_curr_data_link_v as
+SELECT "FIRM_ID",
+       Firm_Name,
+       Doc_ID,
+       Doc_Name,
+       "TMONTH",
+       "TYEAR",
+       "LEDGER_ID",
+       "CODE_NAME",
+       "LEDGER_NAME",
+       "SUMMA",
+       "GRP_ID",
+       "GRP_NAME"
+  FROM uov_ledgers@link_app;
 
-'''
 create or replace view bosps_grp_dept_link_v as
 SELECT "ID", "FIRM_ID", "NAME", "T", "UNAME", "MDATE"
   FROM 
-'''
-//sl_ngrdept@link_app//'';''
+sl_ngrdept@link_app;
 
-''create or replace view bosps_tp_ledgers_link_v as''
-''select "ID","Z_SCRIPTS_NAME","DEB_ID","KRED_ID","T","NAME","MDATE","UNAME","FIRM_ID","D_FROM","D_TO","K","COLUMN_NAME","INCL","ACC_ID","SFUNC","ADDWHERE","REMARK","EXT_CODE" ''
-''from ''//sl_tledger@link_app//
-''where d_to >= to_date('31.12.2099','DD.MM.YYYY');''
+create or replace view bosps_tp_ledgers_link_v as
+select "ID","Z_SCRIPTS_NAME","DEB_ID","KRED_ID","T","NAME","MDATE","UNAME","FIRM_ID","D_FROM","D_TO","K","COLUMN_NAME","INCL","ACC_ID","SFUNC","ADDWHERE","REMARK","EXT_CODE" 
+from sl_tledger@link_app
+where d_to >= to_date('31.12.2099','DD.MM.YYYY');
+'''
+
 
 
